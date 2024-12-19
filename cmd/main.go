@@ -16,6 +16,7 @@ var str2 = ""
 const (
 	writeIndex = 0
 	blackIndex = 1
+	redIndex   = 2
 )
 
 // func 定义函数 main 函数名
