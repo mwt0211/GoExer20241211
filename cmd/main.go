@@ -28,4 +28,6 @@ func main() {
 	fmt.Printf("运算结果保留两位小数为：%.2f\n", cal)
 	fmt.Println("运算结果为：", cal)
 	fmt.Println("utils包中的Num变量为", util.Num)
+	jugeString := util.JugeString("asdcfg", "adcfgs")
+	fmt.Println("jugeString", jugeString)
 }

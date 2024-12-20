@@ -1,6 +1,10 @@
 package util
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
 
 var Num string = "1"
 
@@ -60,4 +64,31 @@ func Cal(a float64, b float64, operate byte) float64 {
 	}
 	return res
 
+}
+
+/*
+*
+判断两个字符串是否具有相同的字符，但是其顺序并不相同
+*/
+func JugeString(str1, str2 string) bool {
+	var flag = false
+	//判断两个字符串是否相同
+	if str1 == str2 {
+		flag = false
+		return flag
+	}
+	//判断两个字符串长度是否相同
+	if str1 == str2 {
+		flag = false
+		return flag
+	}
+	//判断两个字符串排序之后是否相同
+	str1Chars := strings.Split(str1, "")
+	str2Chars := strings.Split(str2, "")
+	sort.Strings(str1Chars)
+	sort.Strings(str2Chars)
+	fmt.Println("str1Chars---", str1Chars)
+	fmt.Println("str2Chars---", str2Chars)
+	flag = strings.Join(str1Chars, "") == strings.Join(str2Chars, "")
+	return flag
 }
