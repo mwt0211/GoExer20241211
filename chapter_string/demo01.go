@@ -24,4 +24,13 @@ func main() {
 	str4 := "hello" + "啊" + "hello" + "啊" + "hello" + "啊" +
 		"hello" + "啊"
 	fmt.Println("str4", str4)
+
+	//类型转换
+	//高精度像低精度转换
+	var i int64 = 9999999999 //1001010100000010111110001111111111
+	b := int8(i)             //11111111
+	fmt.Println("高精度像低精度转换的数值为", b)
+	//基本类型转string
+	iString := fmt.Sprintf("%d", i)
+	fmt.Printf("%T,%q\n", iString, iString)
 }
