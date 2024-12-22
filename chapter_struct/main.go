@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"unsafe"
 )
@@ -29,6 +30,19 @@ func main() {
 	fmt.Println("c", c)
 	var bol = false
 	fmt.Println("布尔类型的长度为", unsafe.Sizeof(bol), "个字节")
+
+	//序列化
+	jsonMonster := Monster{"牛魔", 100000, "铁扇公主的芭蕉扇"}
+	marshal, _ := json.Marshal(jsonMonster)
+	fmt.Println("marshal", string(marshal))
+	//反序列化
+	var jsonMonster2 Monster
+	err := json.Unmarshal(marshal, &jsonMonster2)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(jsonMonster2.Skill, jsonMonster2.Age, jsonMonster2.Name)
+
 }
 
 type Person struct {
@@ -41,6 +55,7 @@ type Person struct {
 }
 
 type Monster struct {
-	Name string
-	Age  int
+	Name  string `json:"name"`
+	Age   int    `json:"age"`
+	Skill string `json:"skill"`
 }
