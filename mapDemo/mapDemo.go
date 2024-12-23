@@ -9,6 +9,7 @@ func main() {
 	var m map[string]int
 	var str []map[string]interface{}
 	m = map[string]int{"张三": 24, "咯i四": 25}
+	//todo:需要完善key为String，value为任意类型的声明，并向map中添加具体测试值
 	//str=append(str, map[string]interface{
 	//	"name": "HPP",
 	//	"age": 18,
