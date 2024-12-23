@@ -33,4 +33,32 @@ func main() {
 	//基本类型转string
 	iString := fmt.Sprintf("%d", i)
 	fmt.Printf("%T,%q\n", iString, iString)
+	judgeLevel(0)
+}
+
+// 根据分数来匹配对应的等级
+func judgeLevel(score float64) string {
+	res := ""
+	switch {
+	case score > 100:
+		fmt.Printf(
+			"特别棒\n")
+	case score > 90:
+		fmt.Printf(
+			"优秀\n")
+	case score > 80:
+		fmt.Printf(
+			"良好\n")
+	case score > 70:
+		fmt.Printf(
+			"中等\n")
+	case score > 60:
+		fmt.Printf(
+			"及格\n")
+	default:
+		fmt.Printf(
+			"不及格\n")
+
+	}
+	return res
 }
