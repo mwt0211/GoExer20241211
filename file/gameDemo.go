@@ -65,6 +65,11 @@ func main() {
 
 	}
 }
+
+/*
+*
+计算当前等级
+*/
 func computeLevel() {
 	if ex < 20 {
 		level = 1
