@@ -30,4 +30,11 @@ func main() {
 	fmt.Println("utils包中的Num变量为", util.Num)
 	jugeString := util.JugeString("asdcfg", "adcfgs")
 	fmt.Println("jugeString", jugeString)
+	for i := 1; i <= 9; i++ {
+		for y := 1; y <= i; y++ {
+			fmt.Printf("%d*%d = %d   ", i, y, i*y)
+
+		}
+		fmt.Println()
+	}
 }
