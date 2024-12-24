@@ -3,12 +3,14 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"unsafe"
 )
 
 func main() {
 	var monster Monster
 	var monsterdeliver Monster
+	version := 1
 
 	monster.Name = "张三"
 	monster.Age = 18
@@ -42,6 +44,25 @@ func main() {
 		fmt.Println(err)
 	}
 	fmt.Println(jsonMonster2.Skill, jsonMonster2.Age, jsonMonster2.Name)
+	fmt.Println("--------------------")
+	cmd := newCommand(
+		"version",
+		&version,
+		"show version",
+	)
+	//cmd2 := newCommand(
+	//	"version",
+	//	&version,
+	//	"show version",
+	//)
+	fmt.Println(cmd)
+	//todo:输出值不为传入值
+	fmt.Printf("%d", cmd.Var)
+	fmt.Println("******************")
+	cal := new(Cal)
+	result := cal.getQuarter(3)
+	fmt.Printf("%d^2的计算结果为:%d\n", result.Num, result.Ans)
+	log.Printf("%d^2的计算结果为:%d\n", result.Num, result.Ans)
 
 }
 
@@ -58,4 +79,31 @@ type Monster struct {
 	Name  string `json:"name"`
 	Age   int    `json:"age"`
 	Skill string `json:"skill"`
+}
+
+type Command struct {
+	Name    string `json:"name"`    // 指令名称
+	Var     *int   `json:"var"`     // 指令绑定的变量
+	Comment string `json:"comment"` // 指令的注释
+}
+
+func newCommand(name string, varRef *int, comment string) *Command {
+	return &Command{
+		Name:    name,
+		Var:     varRef,
+		Comment: comment,
+	}
+}
+
+type Result struct {
+	Num, Ans int
+}
+type Cal int
+
+func (cal *Cal) getQuarter(num int) *Result {
+	return &Result{
+		Num: num,
+		Ans: num * num,
+	}
+
 }

@@ -7,14 +7,16 @@ import (
 
 func main() {
 	var m map[string]int
+	m = make(map[string]int)
 	var str []map[string]interface{}
 	m = map[string]int{"张三": 24, "咯i四": 25}
 	//todo:需要完善key为String，value为任意类型的声明，并向map中添加具体测试值
-	//str=append(str, map[string]interface{
-	//	"name": "HPP",
-	//	"age": 18,
-	//})
-	fmt.Println(str == nil)
+	str = append(str, map[string]interface{}{"name": "HPP",
+		"age": 18})
+	str = append(str, map[string]interface{}{"city": "北京"})
+	str = append(str, map[string]interface{}{"city": "上海", "address": "黄浦江", "sortNo": "Num1"})
+	fmt.Println("value为任意类型的值", str)
+	fmt.Println("key为", str[0]["age"])
 	fmt.Println(m)
 	fmt.Println("*******************")
 

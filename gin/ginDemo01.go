@@ -26,7 +26,7 @@ func main() {
 	engine.GET("users", func(c *gin.Context) {
 		name := c.Query("name")
 		age := c.DefaultQuery("age", "18")
-		c.String(http.StatusOK, "hello %s,我的年龄是 %s\n", name, age)
+		c.String(http.StatusOK, "hello 我的名字是%s,我的年龄是 %s\n", name, age)
 	})
 	//Post请求
 	//todo:未绑定成功
@@ -39,6 +39,14 @@ func main() {
 			"userName": userName,
 			"passWord": pwd,
 		})
+	})
+	//重定向
+	engine.GET("/redirect", func(c *gin.Context) {
+		c.Redirect(http.StatusMovedPermanently, "/index")
+	})
+	engine.GET("/index", func(c *gin.Context) {
+		c.Request.URL.Path = "/users"
+		engine.HandleContext(c)
 	})
 	engine.Run(":9090")
 
